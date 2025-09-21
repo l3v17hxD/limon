@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Limón</title>
+  <style>
+    body{
+      background:black;
+      color:white;
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:20px;
+    }
+    button{
+      background:#4CAF50;
+      color:white;
+      padding:20px 40px;
+      border:none;
+      border-radius:10px;
+      font-size:24px;
+      cursor:pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover{
+      background:#45a049;
+    }
+    img{ max-width:300px; border-radius:10px; }
+  </style>
+</head>
+<body>
+
+  <button id="botonLimon">🍋 Limón</button>
+
+  <div id="contenido" style="display:none;">
+    <img src="imagen.jpg" alt="Mi imagen">
+    <!-- El audio solo se reproducirá 1 vez -->
+    <audio id="miAudio" src="audio.mp3" autoplay muted></audio>
+  </div>
+
+  <script>
+    const boton = document.getElementById('botonLimon');
+    const cont  = document.getElementById('contenido');
+    const audio = document.getElementById('miAudio');
+
+    boton.addEventListener('click', () => {
+      boton.style.display = 'none';
+      cont.style.display  = 'flex';
+      // Quitar silencio y reproducir solo una vez
+      audio.muted = false;
+      audio.play().catch(err => console.log('El navegador bloqueó el audio:', err));
+    });
+  </script>
+
+</body>
+</html>
